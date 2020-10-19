@@ -5,11 +5,17 @@ import FlashMessage, { FlashMessageProps } from './index';
 
 const Template: Story<FlashMessageProps> = (args) => <FlashMessage {...args} />;
 
-export const Success = Template.bind({});
-Success.args = {
+export const Intro = Template.bind({});
+Intro.args = {
   id: '1',
   body: '',
   title: 'Flash message title',
+  type: 'info',
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  ...Intro.args,
   type: 'success',
 };
 

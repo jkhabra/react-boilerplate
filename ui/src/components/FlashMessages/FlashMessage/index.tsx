@@ -1,22 +1,30 @@
 import c from 'classnames';
 import React from 'react';
 import { MdCheckCircle, MdClose, MdError } from 'react-icons/md';
-import { FlashMessage as FullFlashMessageType } from 'src/duck/flashMessages';
+
+import { FlashMessage as FullFlashMessageType } from '../duck';
 
 import s from './style.module.scss';
 
 export type FlashMessageType = Omit<FullFlashMessageType, 'duration'>;
 
 export interface FlashMessageProps extends FlashMessageType {
+  /**
+   * A plain callback to notify the parent to remove the FlashMessage by
+   * removing it from the state.
+   */
   onClose: (id: string) => void;
 }
 
+/**
+ * Used *internally* by `FlashMessages`. You shouldn't need to use this component directly.
+ */
 export const FlashMessage: React.FC<FlashMessageProps> = (p) => {
   const Icon =
     p.type === 'success' ? (
-      <MdCheckCircle className={c(s['flash-icon'])} />
+      <MdCheckCircle className={s['flash-icon']} />
     ) : (
-        <MdError className={c(s['flash-icon'])} />
+        <MdError className={s['flash-icon']} />
       );
 
   return (

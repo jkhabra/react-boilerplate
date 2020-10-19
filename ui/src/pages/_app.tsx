@@ -14,7 +14,9 @@ const App: React.FC<any> = ({ Component, pageProps }) => {
   return (
     <>
       <Component {...pageProps} />
-      <FlashMessages messages={flashMessages} />
+      <div className="flash-messages-portal">
+        <FlashMessages messages={flashMessages} />
+      </div>
     </>
   );
 };
